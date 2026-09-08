@@ -1,4 +1,35 @@
-site_name: ARM Project Docs
+site_name: A.R.M. Project Docs
 site_url: null
 repo_url: https://github.com/automatic-ripping-machine/automatic-ripping-machine
-repo_name: A.R.M. github
+repo_name: github
+site_description: Development documentation for the Automatic Ripping Machine project
+remote_branch: gh-pages
+remote_name: origin
+nav:
+  - Home: index.md
+  #- Installation: installation.md
+  #- Configuration: configuration.md
+  #- Usage: usage.md
+  #- Development: development.md
+  #- Contributing: contributing.md
+  #- Changelog: changelog.md
+theme:
+  name: readthedocs
+  color_mode: auto
+  user_color_mode_toggle: true
+  nav_style: primary
+  highlightjs: true
+  hljs_style: github
+  hljs_style_dark: github-dark
+  hljs_languages:
+    - bash
+    - python
+    - yaml
+    - json
+    - ini
+    - markdown
+#  shortcuts:
+  navigation_depth: 2
+  locale: en
+  docs_dir: dev_docs
+  site_dir: site

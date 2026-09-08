@@ -1,0 +1,13 @@
+# CODEOWNERS
+# Each line is a file pattern followed by one or more owners.
+# These owners are automatically requested for review when someone
+# opens a pull request that modifies matching files.
+#
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+*       @your-username
+
+# Owners for specific directories (uncomment and edit as needed)
+# /docs/         @docs-team
+# /src/api/      @api-team

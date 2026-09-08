@@ -1,0 +1,17 @@
+[Project Name]
+Copyright [YEAR] [Copyright Holder]
+
+This product includes software developed by [Project Name] and its
+contributors.
+
+---
+
+This file is only required if your license mandates it (e.g. Apache
+License 2.0, section 4(d)). If you're using MIT, BSD, or another license
+without a NOTICE requirement, you can delete this file.
+
+If you do need it, list here any third-party software bundled with this
+project along with its own copyright/license notice, for example:
+
+  This product includes [Library Name] (https://example.com),
+  licensed under the [License Name].
