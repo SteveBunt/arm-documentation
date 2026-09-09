@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Architecture - A.R.M. Project Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Architecture";
+        var mkdocs_page_input_path = "architecture.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/ini.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/markdown.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> A.R.M. Project Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../v3scope/">v3 Scope</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#00-vision-goals-and-principles">00 — Vision, Goals, and Principles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#01-system-architecture-overview">01 — System Architecture Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#02-job-lifecycle-crash-recovery">02 — Job Lifecycle &amp; Crash Recovery</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#03-protocol-rest-websocket-contract">03 — Protocol: REST + WebSocket Contract</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#04-data-model">04 — Data Model</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#05-cross-cutting-concerns">05 — Cross-Cutting Concerns</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#06-deployment">06 — Deployment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#07-open-questions-deferred-decisions">07 — Open Questions &amp; Deferred Decisions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#08-v2-isolation-and-cutover-plan">08 — v2 Isolation and Cutover Plan</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#09-testing-philosophy-as-built">09 — Testing Philosophy (as-built)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#10-iso-source-ripping-proposed-design-only">10 — ISO-Source Ripping (proposed, design only)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-the-eleven-documents-fit-together">How the Eleven Documents Fit Together</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">A.R.M. Project Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Architecture</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/SteveBunt/arm-documentation/edit/master/docs/architecture.md" class="icon icon-github"> Edit on github</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="arm-v3-detailed-architecture-reference">ARM v3 — Detailed Architecture Reference</h1>
+<p>A comprehensive, document-by-document reference covering all eleven files in <code>docs/arch/</code> on the <a href="https://github.com/shitwolfymakes/automatic-ripping-machine/tree/integration/all-prs"><code>integration/all-prs</code></a> branch, as of the architecture set dated 2026-04-18 (with later additions/updates noted where the source docs carry a different date). This is the detailed companion to the earlier condensed Architecture Summary — where that document orients, this one preserves the reasoning, field-level detail, and tradeoffs behind each decision.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Document</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>Vision, goals, principles</td>
+<td>Why v3 exists, who it's for, six design principles, release success criteria</td>
+</tr>
+<tr>
+<td>01</td>
+<td>System architecture overview</td>
+<td>Container topology, per-service detail, disc-to-file data flow, drive polling</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Job lifecycle &amp; crash recovery</td>
+<td>State machines, crash-recovery mechanics, session model, output naming, write safety</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Protocol: REST + WebSocket</td>
+<td>Full API surface, WS topics, why each transport was chosen for what it carries</td>
+</tr>
+<tr>
+<td>04</td>
+<td>Data model</td>
+<td>Every core table, ERD, migration workflow, deliberate omissions</td>
+</tr>
+<tr>
+<td>05</td>
+<td>Cross-cutting concerns</td>
+<td>Config, auth, TLS, secrets, logging, code quality, notifications</td>
+</tr>
+<tr>
+<td>06</td>
+<td>Deployment</td>
+<td>Supported targets, install layout, build chain, file ownership, backup/upgrade</td>
+</tr>
+<tr>
+<td>07</td>
+<td>Open questions</td>
+<td>The one live deferred decision (queue mechanism)</td>
+</tr>
+<tr>
+<td>08</td>
+<td>v2 isolation &amp; cutover</td>
+<td>The isolation rule, coexistence, the cutover PR step-by-step, readiness criteria</td>
+</tr>
+<tr>
+<td>09</td>
+<td>Testing philosophy</td>
+<td>Principles, the two as-built test tiers, coverage policy, planned tiers</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ISO-source ripping</td>
+<td>Proposed (design-only) feature: ripping from a file instead of a disc</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="00-vision-goals-and-principles">00 — Vision, Goals, and Principles</h2>
+<p><strong>Who v3 is for.</strong> Single-admin homelab users — one person running ARM for their own household, explicitly not a shared service, multi-tenant platform, or commercial product. The user base skews toward <strong>data-hoarders</strong>, people who rip to preserve the raw bits rather than just to feed a streaming app. This single fact shapes real defaults: raw files are kept forever unless the user opts out, and re-transcoding from raw is treated as a first-class, expected operation rather than an edge case.</p>
+<p><strong>The two problems that justified a rebuild over a refactor:</strong></p>
+<ol>
+<li><strong>Resource isolation.</strong> In v2, rippers, UI, and transcoding all share one process tree inside a single container, so heavy work in one area degrades every other area — running multiple rips concurrently causes compute contention that the UI feels immediately. v3 must separate these so N concurrent rips and a transcode cannot starve the UI.</li>
+<li><strong>Batch-rip resumability.</strong> A user who queues five discs and loses power mid-rip on disc #3 has, in v2, no way to recover — the system treats each rip as atomic and non-resumable. v3 must checkpoint finely enough that a power event doesn't discard completed work, with partially-completed work re-queued automatically on restart.</li>
+</ol>
+<p>A third, adjacent pain point surfaced during scoping: users want <strong>Sessions</strong> — rip once, transcode many times with different presets. v2 conflates rip and transcode into one irreversible pipeline; v3 separates them.</p>
+<p><strong>Six design principles:</strong></p>
+<ol>
+<li><strong>Bits first, metadata second, transcode third.</strong> A rip succeeds the moment bits are safely on disk and recorded in the DB. Metadata enrichment and transcoding are independent downstream stages that can fail, retry, or be re-run without touching the raw.</li>
+<li><strong>One service, one responsibility.</strong> The Ripper exists to turn a disc into bytes on disk. The Backend exists to own state and speak to the internet. The Transcode container exists to turn one raw into one output. The UI exists to render state and take commands. No service does "a little bit of the other guy's job."</li>
+<li><strong>Backend is the single internet boundary.</strong> Ripper and Transcode containers never talk to the internet — all external calls (TMDB/OMDB/MusicBrainz/Apprise/webhooks) originate from the Backend. Workers are simpler to run (no API keys, no outbound firewall holes) and external credentials live in exactly one place.</li>
+<li><strong>Postgres is the source of truth; stdout is the source of logs.</strong> Durable state lives in Postgres. Logs are structured JSON emitted to stdout and appended to a shared volume. No third persistence mechanism, no hiding debug data behind a query language.</li>
+<li><strong>Crash-safe by default.</strong> Every long-running operation is checkpoint-able. A worker crash must not discard completed sub-work. A stale "in-progress" row with no live worker is the signal for "re-queue me."</li>
+<li><strong>No sacred cows.</strong> This is a greenfield rebuild. Any assumption inherited from v2 is open for review — when in doubt, re-decide from first principles rather than preserve an old shape.</li>
+</ol>
+<p><strong>Success criteria for v3.0:</strong> five queued discs across two drives complete without manual intervention, including a simulated power-cut mid-batch that resumes cleanly; a ripped disc can have a new session applied from the UI months later without re-ripping; a single PR can change a protocol payload and its two endpoints (ripper side + backend side) atomically; a bug-reporter can download one log file scoped to one job_id and attach it to a GitHub issue; a fresh install on a new host lands at the login screen in under 5 minutes.</p>
+<hr />
+<h2 id="01-system-architecture-overview">01 — System Architecture Overview</h2>
+<p><strong>Container topology and service roles:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Image</th>
+<th>Lifetime</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UI</td>
+<td><code>arm-ui</code></td>
+<td>Long-running</td>
+<td>SPA (Vite-built Vue 3) served by nginx; consumes Backend API + WS</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td><code>arm-backend</code></td>
+<td>Long-running</td>
+<td>FastAPI: job/session state machine, internet adapters, WS hub, spawns transcoders</td>
+</tr>
+<tr>
+<td>Ripper</td>
+<td><code>arm-ripper</code></td>
+<td>Long-running, one per drive</td>
+<td>Bound to a single <code>/dev/sr*</code>; identifies disc, rips to <code>/raw</code>, reports to Backend</td>
+</tr>
+<tr>
+<td>Transcode</td>
+<td><code>arm-transcode</code></td>
+<td>Ad-hoc, one per transcode</td>
+<td>Spawned by Backend; optional GPU pass-through; reports progress, exits</td>
+</tr>
+<tr>
+<td>DB</td>
+<td><code>postgres:18</code></td>
+<td>Long-running</td>
+<td>Source of truth for all state</td>
+</tr>
+</tbody>
+</table>
+<p>The Backend is the brain; everything else is a worker that talks to it over REST + WebSocket.</p>
+<p><strong>Per-service detail:</strong></p>
+<ul>
+<li><strong><code>arm-ui</code></strong> — stateless nginx + built SPA; proxies <code>/api</code> and <code>/ws</code> to the Backend; can be rebuilt/redeployed independently. Vue 3 (Composition API + <code>&lt;script setup&gt;</code>) with Pinia and vue-router.</li>
+<li><strong><code>arm-backend</code></strong> — Python 3.14 + FastAPI + Uvicorn + docker-py; not horizontally scalable in v3.0 (it owns the WS hub and state machine as a singleton); requires <code>/var/run/docker.sock</code> to spawn transcode containers.</li>
+<li><strong><code>arm-ripper-&lt;drive&gt;</code></strong> — one container per drive, created by the Backend on enrollment (not a static compose service); reads <code>ARM_DRIVE_DEV</code> at boot, registers with Backend, never talks to the internet.</li>
+<li><strong><code>arm-transcode-&lt;uuid&gt;</code></strong> — zero replicas at rest; Backend spawns one per transcode job, container exits on completion; auto-detects hardware encoders and advertises them at handshake; <code>ARM_AUTO_TRANSCODE</code> toggles "spawn when idle" vs. "user must initiate."</li>
+<li><strong><code>arm-db</code></strong> — <code>postgres:18</code>; bootstrap credentials via env, all other config (API keys, Apprise URLs) lives in DB rows written through the UI, stored plaintext.</li>
+</ul>
+<p><strong>Data flow, disc insertion to finished file (10 steps):</strong> (1) ripper detects insertion via 2s <code>ioctl(CDROM_DRIVE_STATUS)</code> polling — no host udev rules; (2) ripper scans with MakeMKV (track layout, volume label) or reads a MusicBrainz Disc ID for CDs; (3) ripper calls <code>POST /api/ripper/identify</code>, Backend queries TMDB/OMDB/MusicBrainz — on a hit the job becomes <code>identified</code>, on a miss it either blocks (default) or, in opt-in placeholder mode, rips immediately with identity deferred; (4) ripper creates one <code>Track</code> row per title and begins ripping, streaming progress over WS; (5) on completion the ripper emits <code>rip.completed</code> and ejects; (6) if the drive has a <code>default_session_id</code> and auto-transcode is on, Backend queues a session application; (7) Backend spawns <code>arm-transcode-&lt;uuid&gt;</code> via the Docker socket, mounting <code>/raw</code> read-only and <code>/media</code> read-write; (8) the worker runs HandBrake, streaming progress; (9) on completion it emits <code>session.completed</code>, exits, and notifications fire; (10) raw is retained by default — the user can queue additional sessions at any time.</p>
+<p><strong>Drive polling mechanics.</strong> The ripper reads disc presence via <code>ioctl(CDROM_DRIVE_STATUS)</code> — the same ioctl udev's <code>cdrom_id</code> helper uses, just without the event router, so it works inside a container with no host-side udev config. No root required (membership in <code>cdrom</code> suffices).</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Constant</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>CDS_NO_INFO</code></td>
+<td>Drive does not report status (rare)</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>CDS_NO_DISC</code></td>
+<td>Tray closed, empty</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>CDS_TRAY_OPEN</code></td>
+<td>Tray out</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>CDS_DRIVE_NOT_READY</code></td>
+<td>Spinning up / reading TOC</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>CDS_DISC_OK</code></td>
+<td>Ready to read</td>
+</tr>
+</tbody>
+</table>
+<p>Insert transition: <code>NO_DISC</code>/<code>TRAY_OPEN</code> → <code>DRIVE_NOT_READY</code> (1–5s) → <code>DISC_OK</code>, with <code>DRIVE_NOT_READY</code> treated as "keep polling," not an error. <strong>Polling is suspended once MakeMKV starts reading</strong> — a mid-rip eject shows up as a read error, not a status transition to race for; this also forecloses a v2-era bug (duplicate rip processes spawned by multiple insert events on the same device, since one long-running ripper now owns the drive and polling is gated on rip state). After completion the ripper auto-ejects and waits for the next <code>DISC_OK</code>; no state is held between discs, and each transition allocates a fresh <code>job_id</code>.</p>
+<p><strong>Shared volumes:</strong> <code>arm_raw</code> (<code>/raw</code>, rippers write / transcoders read, flat tree, no auto-prune), <code>arm_media</code> (<code>/media</code>, transcoders write, Plex/Jellyfin-friendly layout), <code>arm_logs</code> (<code>/logs</code>, all services write, JSONL correlated by <code>job_id</code>), <code>arm_config</code> (<code>/config</code>, Backend-written app config).</p>
+<p><strong>Privilege model.</strong> Backend mounts the Docker socket (treat as host-root-equivalent, a standard homelab pattern shared with Traefik/Watchtower). Rippers get device access. Transcode may get conditional GPU access. UI and DB are unprivileged.</p>
+<p><strong>Deliberately not in this architecture:</strong> a queue/broker (DB-as-queue for now, deferred decision — see doc 07) and a separate metadata worker (lookups stay inline in the Backend since latency is dominated by the MakeMKV scan anyway, and a separate worker is complexity without payoff at homelab scale).</p>
+<hr />
+<h2 id="02-job-lifecycle-crash-recovery">02 — Job Lifecycle &amp; Crash Recovery</h2>
+<p>This is the document behind the project's single biggest motivating goal.</p>
+<p><strong>The five entities.</strong> <strong>Job</strong> — one disc insertion, owns the overall rip outcome. <strong>Track</strong> — one logical piece of a disc (a title, a song, a data dump); this is the unit of checkpointing. <strong>Session Application</strong> — the durable record of "apply session S to job J," owning fan-out into Transcode Tasks. <strong>Transcode Task</strong> — the unit of work one <code>arm-transcode</code> container executes; one session application fans out to N tasks. <strong>Session</strong> — not itself a lifecycle entity, but a named, reusable bundle of (rip preset, transcode preset, output path template) scoped to a media type.</p>
+<p><strong>Job state machine:</strong> <code>created</code> → (identify OK) → <code>identified</code> → (first track begins) → <code>ripping</code> → <code>ripped</code> or <code>ripped_partial</code> (if some tracks failed). An identify failure detours to <code>awaiting_user_id</code>, from which the user resolving in the UI returns to <code>identified</code>. Terminal states: <code>ripped</code>, <code>ripped_partial</code>, <code>abandoned</code> (user gave up — also ejects the disc, though a stale abandon on a job that no longer owns the drive never touches the tray), <code>failed</code> (catastrophic identification failure).</p>
+<p><strong>Track state machine:</strong> <code>queued</code> → <code>in_progress</code> → <code>done</code> or <code>failed</code>. No <code>stale</code> state and no per-track claim — with one ripper container per drive, the ripper that creates the tracks is the only writer for the disc's lifetime, so nothing else can race for them.</p>
+<p><strong>Crash recovery — the core design decision: a rip restarts entirely from scratch on interruption</strong>, never resuming mid-track. Every track for the job resets to <code>queued</code>, <code>/raw/&lt;job_id&gt;/</code> is wiped, and MakeMKV reruns — including tracks the DB had marked <code>done</code>. Three reasons: (1) MakeMKV can't resume a partial title, so the in-progress track was already forcing a re-rip; (2) a "done" file recorded in the DB may not have hit disk before a power cut, since there's no per-track <code>fsync</code> — trusting it risks silent corruption; (3) interruptions are rare, and re-ripping a few done tracks on an occasional power cut is cheaper than the durability machinery needed to make partial state trustworthy.</p>
+<p>Two recovery paths trigger the reset, converging on the same DB transition: a <strong>Backend-startup sweep</strong> (finds every job stuck <code>status='ripping'</code> on boot — by definition all such jobs were interrupted — marks <code>resumed_from_crash=true</code>, resets tracks, increments <code>attempts</code>), and a <strong>ripper-startup probe</strong> (when a ripper container restarts and finds Backend reporting an in-flight job on its drive, it calls <code>POST /api/ripper/jobs/{job_id}/resume</code>, triggering the same reset). What this buys: a power cut mid-batch is fully recovered with no per-track timeouts to wait out; a ripper-only crash is handled by Docker's restart policy plus the startup probe; a Backend-only crash doesn't even interrupt rips, since rippers buffer their state-transition calls with exponential backoff (1s, 2s, 4s, 8s, 30s cap) until Backend returns. What it explicitly does <strong>not</strong> do: resume mid-track or mid-job (by design), or detect a hung-but-not-crashed ripper (no automatic timeout — the user restarts the container manually, which triggers the probe).</p>
+<p><strong>Session Application state machine:</strong> <code>drafted</code> → <code>queued</code> (normal path) → <code>running</code> → <code>done</code> / <code>done_partial</code> / <code>failed</code>. A special <code>waiting_identify</code> state exists for the case where a session is queued against a job still <code>awaiting_user_id</code> under a deferred-placeholder rip preset — the application parks there until identity resolves. <strong>Transcode Task state machine:</strong> <code>queued → in_progress → (done | failed | stale)</code> — unlike the rip side, this one genuinely needs per-task claims and heartbeats (<code>claimed_by</code>, <code>claim_heartbeat_at</code>), because multiple ephemeral transcoder containers really do compete for queued tasks. A stale claim requeues (re-transcode from scratch — HandBrake can't resume either), but already-<code>done</code> sibling tasks in the same application keep their output.</p>
+<p><strong>Why rip-level restart but task-level checkpointing for transcode — two different cost models.</strong> Rip-side: MakeMKV has no mid-title resume, "done" isn't guaranteed durable without a per-track fsync, and interruptions are rare enough that a wasted 30 minutes every few months is cheaper than the safety machinery. Transcode-side: a session application can fan out into many tasks, a 4-hour batch transcode losing all progress on a Backend restart is a much worse trade than a 45-minute rip losing progress on a power cut, and transcode tasks have stable inputs (raw files that don't change) and run in ephemeral containers that come and go anyway — a natural fit for claim-and-heartbeat with per-task retry.</p>
+<p><strong>Session model, in detail.</strong> Three tables recompose into one user-facing concept: <code>rip_presets</code> govern ripper behavior (track selection, identification mode, output mode), <code>transcode_presets</code> govern encoding (HandBrake preset reference, abcde profile, container, hardware preference), and <code>sessions</code> compose one of each plus an <code>output_path_template</code>. Built-ins ship locked (<code>is_builtin=true</code>, not editable through the API; the UI's "New Session" wizard can pre-fill from a built-in but always saves a new, unlinked row). Sessions are scoped to a single media type, and any session can be applied to any rip of the matching type — the UI filters the picker accordingly. Transcode preset is nullable (ISO/data-copy sessions skip transcode entirely). Sessions are re-runnable months later against an old rip, as long as the raw hasn't been pruned. <strong>Why the split:</strong> v2 bundled rip strategy + transcode settings + output convention into one concept, which can't cleanly express home-movie rips (no identification), ISO dumps (no transcode), or multiple output formats from the same source (MP3 + FLAC from one CD) — decomposing lets the parts be independently reusable while keeping the user-facing story simple ("pick a session").</p>
+<p><strong>Output paths and naming.</strong> <code>/raw</code> is internal, never exposed to media scanners, using MakeMKV's native <code>title_tNN.mkv</code> naming; cleanup removes the whole <code>/raw/{job_id}/</code> directory once every derived transcode is terminal and retention policy allows (default <code>keep_forever</code>, matching the data-hoarder profile from doc 00). <code>/media</code> mirrors the Plex/Jellyfin convention (<code>Movies/{Title} ({Year})/…</code>, <code>TV Shows/{Show} ({Year})/Season {NN}/…</code>, <code>Music/{Artist}/{Album}/…</code>), with the top-level folder names configurable but the subtree shape fixed (changing it would break scanner matching). <code>{transcode_slug}</code> is included by default in filenames so the same raw rip transcoded multiple ways (1080p H.265, 4K HDR, phone-friendly) produces sibling files both Plex and Jellyfin group as alternate versions rather than colliding.</p>
+<p>Filename templates apply <strong>at transcode time, not rip time</strong> — the rip step only ever produces MakeMKV's native <code>/raw/{job_id}/title_tNN.mkv</code> names. The guiding principle is "don't pretend to know what we don't know": MakeMKV surfaces only track layout and a volume label, no episode titles or season/disc numbers, so <strong>season and disc number for TV box sets are user-supplied</strong>, and there's deliberately <strong>no auto-<code>SNNEMM</code> guessing</strong> for TV — disc order isn't always episode order, and a wrong silent guess is worse than an honest mechanical name the user renames after the fact. "Play All" tracks aren't auto-detected either (duration-sum heuristics get confounded by bonus features on the same disc) — the ripper surfaces all tracks with durations at selection time and the user deselects what they don't want.</p>
+<p><code>output_path_template</code> tokens available depend on media type — <code>{title}</code>/<code>{year}</code> (movie), <code>{show}</code>/<code>{season}</code>/<code>{disc}</code> (TV, season/disc usually user-supplied), <code>{track}</code>/<code>{duration_human}</code> (from MakeMKV or CD), <code>{artist}</code>/<code>{album}</code>/<code>{track_title}</code> (from MusicBrainz/CD-Text — the one case ARM has reliable track-level metadata), <code>{transcode_slug}</code> (slugified transcode preset name, unavailable when there's no transcode preset), <code>{ext}</code>. Templates are validated on session save by expanding against a synthetic job and rejecting any template that would resolve a required slot to empty.</p>
+<p><strong>Concurrent write safety, two layers.</strong> The transcoder writes to <code>&lt;final&gt;.arm-inprogress</code>, <code>fsync</code>s, then atomically <code>rename(2)</code>s to the final path — scanners never see half-written files, and a crash leaves orphaned <code>.arm-inprogress</code> files that the transcoder sweeps at startup. Separately, <strong>apply-time collision validation</strong> resolves every task's output path before fan-out and catches two cases: a cross-session collision (two sessions' templates resolving to the same path) and a cross-job collision (the same session applied to a job re-identified as a title already ripped) — both surface an explicit overwrite-or-cancel dialog rather than a silent auto-suffix, because auto-suffixing hides user intent and produces files neither scanner recognizes as meaningful versions. A DB-level partial unique index on <code>transcode_tasks(output_path)</code> for live-status rows is the safety net for anything the apply-time check missed. Applying the same (session, job) pair twice is idempotent — it returns the existing session application rather than fanning out twice.</p>
+<p><strong>Unidentified and placeholder rips.</strong> In opt-in placeholder mode (<code>identification_mode=deferred_placeholder</code> or global <code>block_on_miss=false</code>), ripping proceeds immediately on an identify miss, writing to <code>/raw/&lt;job_id&gt;/</code> exactly as normal — <strong>nothing is ever renamed or moved as a consequence of identity resolution</strong>. Transcode is gated on identity, not rip completion: queued session applications sit in <code>waiting_identify</code> until the user resolves identity via <code>POST /api/jobs/{job_id}/resolve</code>, at which point Backend fans out transcode tasks against the now-resolved title with correct paths from the first byte written. If identity is changed again after transcoding has already started, already-completed outputs stay put — treated the same as a user manually renaming a movie post-transcode, out of scope for automatic cleanup.</p>
+<hr />
+<h2 id="03-protocol-rest-websocket-contract">03 — Protocol: REST + WebSocket Contract</h2>
+<p><strong>Exactly two transports, nothing else.</strong> REST (HTTP/1.1, JSON) for anything that must durably land — config fetches, state transitions, CRUD. WebSocket for streaming only — live progress and async push. Direct DB access between services, file-based IPC, and shared memory are all explicitly out of scope; workers never read each other's state. All schemas are Pydantic models in <code>packages/arm_common/schemas/</code>, exported as OpenAPI from the Backend, imported by both producer and consumer sides so a protocol change is one PR touching both.</p>
+<p><strong>Base URLs.</strong> Backend listens on <code>8443</code> inside its container, TLS-only — there is no plaintext port. UI's nginx proxies <code>/api/*</code> and <code>/ws/*</code> to it; rippers and transcoders reach it directly on the compose network, verifying against the internal CA.</p>
+<p><strong>Service auth.</strong> Ripper and Transcode authenticate with a shared service token (<code>Authorization: Bearer &lt;token&gt;</code>), generated once at install and injected via Compose — no DB copy exists. The UI authenticates as a logged-in user via JWT on REST and a first-message <code>{"op": "auth", "token": "…"}</code> handshake on WS.</p>
+<p><strong>Ripper ↔ Backend REST surface</strong> (Ripper is the client, all under <code>/api/ripper/</code>): <code>POST /register</code> (startup handshake), <code>GET /drives/{id}/config</code> (rip parameters), <code>POST /identify</code> (blocks server-side during external lookup — body carries the MakeMKV scan or MusicBrainz Disc ID, response is the full Job row), <code>GET /jobs/{id}</code> (rarely needed, WS preferred), <code>POST /jobs/{id}/tracks</code> (create track rows post-identify), <code>POST /jobs/{id}/resume</code> (crash-recovery reset, described above), <code>PATCH /tracks/{id}/complete</code> and <code>/fail</code>, <code>POST /jobs/{id}/complete</code>. There is no ripper heartbeat endpoint — crash detection happens at container-restart time, not via timeout, and state-transition calls retry until acknowledged.</p>
+<p><strong>UI ↔ Backend REST surface</strong> (all under <code>/api/</code>): auth (<code>login</code>, <code>logout</code> — a no-op server-side since JWTs aren't tracked, <code>password</code>), config read/update, drives list/update, jobs list/detail/resolve/abandon, sessions CRUD, <code>POST /jobs/{id}/transcode</code> (queue a session), transcodes list/cancel, and logs (global query plus per-job JSONL view).</p>
+<p><strong>Transcode container ↔ Backend REST surface</strong> (minimal, short-lived client): <code>POST /register</code>, <code>POST /tasks/{id}/claim</code>, <code>PATCH /tasks/{id}/heartbeat</code> (every 30s), <code>PATCH /tasks/{id}/complete</code> and <code>/fail</code>.</p>
+<p><strong>WebSocket.</strong> One endpoint, <code>/ws</code>; clients subscribe to named topics after connecting. Topics: <code>ripper.progress.{job_id}</code> (per-track progress, fanned out from rippers), <code>ripper.events</code> (typed: started/completed/failed/needs_user_input/resumed_from_crash), <code>transcode.progress.{task_id}</code>, <code>transcode.events</code> (typed: session/task started/completed/failed), <code>system.events</code> (drive online/offline, backend restart, config change), <code>logs.{job_id}</code> (tails per-job log stream), <code>ripper.commands.{drive_id}</code> (Backend → the one owning ripper: <code>identify.resolved</code>, <code>job.cancel</code>), <code>transcoder.commands.{task_id}</code> (Backend → the one claiming transcoder: <code>task.cancel</code>). A <code>publish</code> op lets authorized principals push events the hub then fans out — a ripper can only publish to its own job's progress topic, never to typed-event topics, and the UI never publishes at all (backend code emits in-process instead). <strong>Progress topics are never persisted</strong> — writing every tick to the <code>events</code> table would multiply the write rate 10–100× for zero audit value, and the hub throttles progress to 1 Hz per <code>(topic, track_id)</code> regardless.</p>
+<p><strong>UI WS session scope.</strong> Opened after login, closed on logout/unload — the UI must not keep a WS alive in a background tab or service worker ("tell me what happened while I wasn't watching" is explicitly Apprise's job, not the UI's). There is no event replay or catch-up on reconnect; REST gives current state, WS gives live updates going forward, and that's the whole contract.</p>
+<p><strong>Why REST for state, WS for progress:</strong> state transitions must land (request/response acknowledgement, retry-until-acked, clean HTTP error codes on failure); progress is fire-and-forget telemetry where a dropped tick is invisible since the next tick replaces it, and one durable WS connection also carries identify-resolution events back to the ripper for free. No heartbeat protocol exists at all — crash detection is entirely container-restart-based, not timeout-based; the transcoder's REST claim/heartbeat is the one exception, because multiple ephemeral transcoders genuinely compete for tasks, a fundamentally different problem from the one-ripper-per-drive case.</p>
+<p><strong>Event envelope</strong> is uniform: <code>{event_id, event_type, emitted_at, job_id, track_id, payload}</code>, persisted to an <code>events</code> table that the Apprise-backed <code>NotificationDispatcher</code> consumes.</p>
+<p><strong>Versioning.</strong> URL-prefix versioning is reserved for a future break (v3.0 ships <code>/api/</code> as implicit v1); <code>arm_common</code> schemas are semver'd with all services in a release pinned to the same version; fields are added freely within a major and never removed or renamed except across majors.</p>
+<p><strong>Deliberately excluded from the contract:</strong> inter-worker communication (rippers and transcoders never call each other — everything routes through Backend), Backend-initiated calls to rippers (Backend updates DB state and pushes a WS event instead; rippers are never HTTP servers), and binary transport (everything is JSON, unoptimized until measured).</p>
+<hr />
+<h2 id="04-data-model">04 — Data Model</h2>
+<p>Postgres 18 is the sole source of truth — no SQLite fallback, no sidecar store. <strong>Conventions:</strong> ULID primary keys prefixed by entity name (<code>job_01HXYZ…</code>) for legible logs and URLs; every table has <code>created_at</code>/<code>updated_at</code>; no soft-deletes (a status column hides a row if needed); foreign keys enforced at the DB layer; enums stored as plain <code>VARCHAR</code> rather than native Postgres types — a deliberate tradeoff, since <code>ALTER TYPE</code> is awkward in transactional migrations and some schema-diff tools gate enum-diff behind paid tiers, accepting that a bad value inserted via raw <code>psql</code> isn't caught by the DB itself (acceptable for a single-admin system).</p>
+<p><strong>Core tables:</strong></p>
+<ul>
+<li><strong><code>users</code></strong> — one row per admin account; v3.0 seeds exactly one (<code>admin</code>, argon2id-hashed, <code>password_must_change=true</code>); the table exists so multi-user is trivial to add later without a migration.</li>
+<li><strong><code>config</code></strong> — a singleton row (sentinel <code>id=1</code>) holding third-party API keys, <code>auto_transcode_on_idle</code>, <code>default_retention_policy</code>, Apprise URLs, and the auto-generated <code>session_signing_key</code> used for JWT signing.</li>
+<li><strong><code>drives</code></strong> — one row per detected optical drive; enrolling one creates its ripper container. Carries <code>status</code>, <code>rip_params_json</code>, and a nullable <code>default_session_id</code> for auto-transcode.</li>
+<li><strong><code>jobs</code></strong> — one row per disc insertion. Carries <code>disc_type</code>, the state machine's <code>status</code>, <code>resumed_from_crash</code>, and forward-compatible-but-currently-unpopulated <code>disc_fingerprint</code>/<code>disc_fingerprint_algo</code>/<code>aacs_disc_id</code> columns reserved for a future community lookup database. The only index needed is <code>(status)</code>, since the entire crash-recovery sweep is "find every job with <code>status='ripping'</code>."</li>
+<li><strong><code>tracks</code></strong> — the checkpoint unit. Carries <code>kind</code>, <code>index</code>, <code>source_ref</code>, <code>status</code>, <code>attempts</code>, <code>output_path</code>, <code>sha256</code>, plus forward-compatible <code>label</code>/<code>role</code>/<code>role_source</code>/<code>edition</code> columns for a future community-sourced disc database (free-text <code>role</code>, not an enum, so new values don't require schema changes). No claim/heartbeat columns — see the crash-recovery rationale in doc 02.</li>
+<li><strong><code>rip_presets</code></strong> — <code>track_selection</code> (main_feature/all_tracks/archive/custom), <code>identification_mode</code> (required/skip/deferred_placeholder), <code>output_mode</code> (tracks/iso/data_copy), <code>track_filters_json</code> for declarative rules. Built-ins are <code>is_builtin=true</code> and locked.</li>
+<li><strong><code>transcode_presets</code></strong> — <code>tool</code> (handbrake/abcde/none), <code>preset_ref</code>, <code>container</code>, <code>hw_preference</code> (null \= prefer HW/queue-if-busy/CPU-if-none, <code>cpu_only</code>, <code>any</code>), <code>extra_args</code> escape hatch.</li>
+<li><strong><code>sessions</code></strong> — the user-facing composition: <code>name</code> (unique per user), <code>media_type</code>, <code>rip_preset_id</code>, nullable <code>transcode_preset_id</code>, <code>output_path_template</code>, <code>overrides_json</code>.</li>
+<li><strong><code>transcode_tasks</code></strong> — one row per raw-track-to-output operation, the one table with real <code>claimed_by</code>/<code>claim_heartbeat_at</code> columns since ephemeral transcoders genuinely compete for work. A partial unique index on <code>output_path</code> for live-status rows is the DB-level collision safety net.</li>
+<li><strong><code>session_applications</code></strong> — the durable "apply session S to job J" record, including the <code>waiting_identify</code> status for placeholder-rip parking and an <code>overwrite</code> flag set by the collision dialog.</li>
+<li><strong><code>gpus</code></strong> — runtime hardware-encoder inventory, truncated and repopulated on every Backend boot (not persistent, not user-editable); tasks claim a row via <code>SELECT … FOR UPDATE SKIP LOCKED</code> and fall back to CPU automatically if the table is empty.</li>
+<li><strong><code>events</code></strong> — append-only typed-event log powering notifications and the UI activity feed, retained 90 days by default.</li>
+</ul>
+<p><strong>Schema and migrations.</strong> ORM is SQLModel (Pydantic + SQLAlchemy 2.0), one class per entity doubling as the wire schema where shapes match. Migrations run through Alembic <code>--autogenerate</code>, but generated revisions are explicitly treated as drafts — autogenerate handles column add/drop/type changes well but misses constraint renames, server defaults on existing columns, and partial-index changes, which get patched by hand. The Backend runs <code>alembic upgrade head</code> on startup before serving traffic; no sidecar migration container, no online schema changes planned (downtime during <code>docker compose up</code> after a migration is accepted for a homelab). Tortoise+Aerich and Piccolo were considered and rejected for weaker Postgres-specific feature support (partial indexes, JSONB ops, enum management).</p>
+<p><strong>Deliberately absent from the data model:</strong> a queue table (queue mechanism is deferred — "queue" is just rows <code>WHERE status='queued'</code> for now, keeping the door open to swap in Redis/NATS later without reshaping the model), per-user libraries (one library, one user), download/play-history tracking (ARM rips and transcodes, it isn't a media server), and disc rental/sharing.</p>
+<hr />
+<h2 id="05-cross-cutting-concerns">05 — Cross-Cutting Concerns</h2>
+<p><strong>Configuration is two-tier.</strong> Tier 1 (bootstrap, <code>.env</code>, sourced by Compose): <code>POSTGRES_*</code>, <code>ARM_SERVICE_TOKEN</code> (generated once, never rotated in normal operation), <code>ARM_LOG_LEVEL</code>, <code>PUID</code>/<code>PGID</code> (should match the media server's UID/GID), <code>CDROM_GID</code> (installer-detected). Tier 2 (runtime, DB): everything the user tweaks in the UI — API keys, retention, auto-transcode, Apprise URLs — stored plaintext in <code>config</code>, UI writes / Backend reads. No YAML files anywhere; the v2 <code>arm.yaml</code> pattern is retired.</p>
+<p><strong>Authentication, user-facing.</strong> Local users in <code>users</code>, argon2id-hashed. The seeded <code>admin</code> account gets a <strong>random</strong> first-boot password (not a fixed default) with <code>password_must_change=true</code>; the login response surfaces that flag and <code>require_jwt</code> 403s every endpoint except password-change/logout until it's cleared — so the well-known-default footgun v2 had is closed while still avoiding an operator lockout risk from a lost console printout. Auth is <strong>JWT, not cookie-based</strong>\: <code>POST /api/auth/login</code> returns <code>{access_token, expires_at}</code>, stored in <code>localStorage</code>, sent as <code>Authorization: Bearer</code>; WS auth is a first-message handshake with a 5-second window. Tokens are HS256-signed with <code>config.session_signing_key</code> (Backend is both issuer and verifier, so symmetric signing is fine), TTL 7 days, non-refreshing — one re-login per week, no refresh token, no MFA, all scoped explicitly to "single-user homelab." Logout is client-side only; there's no server-side blocklist, so an emergency "log out everywhere" means rotating the signing key. <strong>Why JWT over cookies:</strong> homelab operators deploy behind unpredictable reverse-proxy setups, and session cookies touch GDPR/CCPA consent law that Bearer-in-header sidesteps; single-user scope means cookie-specific wins (easy revocation, HttpOnly XSS protection) don't buy much anyway. <strong>Why argon2id over bcrypt:</strong> the 2015 Password Hashing Competition winner and current OWASP recommendation, memory-hard on three tunable axes versus bcrypt's single rounds parameter, no 72-byte silent truncation footgun, and the encoded hash self-describes its parameters so cost can be raised later via transparent rehash-on-verify.</p>
+<p><strong>Authentication, service-to-service.</strong> One shared long-lived service token in <code>.env</code>, injected into Backend/Ripper/Transcode, attached as <code>Authorization: Bearer</code> on REST and via the WS handshake. No per-service tokens — the shared-token tradeoff (a compromised ripper could present the same token as a different ripper) is accepted and mitigated at the authorization layer instead, since per-service token ceremony buys little on a private LAN with three or four containers.</p>
+<p><strong>Authorization rules</strong>, layered on top of the bearer check: drive-scoped ripper endpoints verify the referenced job's drive matches the caller's registered hostname; task-scoped transcoder endpoints verify the task is claimed by the caller; UI-only endpoints reject the service token and require a UI JWT; ripper/transcoder endpoints reject a UI JWT and require the service token. This closes "compromised ripper acts as a different ripper" down to "compromised ripper acts as itself" — the best an endpoint-layer check can do with a shared credential.</p>
+<p><strong>Transport: TLS everywhere, no exceptions</strong>, intra-compose and LAN-side alike — there is no plaintext internal hop, on the reasoning that "not reachable today" (the Docker bridge network) isn't the same guarantee as "not reachable ever" given a misconfigured port publish or a compromised sibling container. <strong>Deployment scope is explicitly LAN-only, never internet-exposed</strong> — remote access should go through WireGuard/Tailscale, not port-forwarding, which is also why Let's Encrypt is ruled out entirely (its HTTP-01 challenge needs public reachability the design deliberately doesn't have). An internal CA is generated once per install (<code>~/arm/certs/</code>, EC P-384, 10-year expiry, unique per install) with per-service leaf certs signed by it; the CA private key never leaves the host and is never mounted into a container. Postgres itself runs with <code>ssl=on</code> against the same CA, on the reasoning that the "compromised sibling sniffs a plaintext hop" threat model applies identically to DB traffic carrying credentials and secrets. Each container's entrypoint merges the mounted CA into the base image's trust store at startup (\~50ms), so the same trust store verifies both public outbound calls (TMDB) and internal HTTPS with no per-client <code>verify=</code> plumbing in application code. <strong>Deliberately not done:</strong> mTLS (the shared service token plus server-side TLS is judged sufficient without per-container client certs), auto-rotation (10-year expiry; <code>install.sh --rotate-ca</code> is the explicit, rare, confirmation-gated path), and public-CA-issued certs (no public CA fits a LAN-only design by construction).</p>
+<p><strong>WebSocket security</strong>, beyond the general auth model: a first-message auth window (5 seconds, anything else closes the connection with code 4401); origin validation against an allowlist (<code>ARM_ALLOWED_ORIGINS</code>) since browsers don't enforce same-origin on WS handshakes the way they do for XHR; per-topic authorization gated by principal type (UI-JWT principals can subscribe broadly, service-token ripper/transcoder principals only to their own command topic); JWT expiry is checked only at handshake, not enforced mid-connection (a long rip session outliving the 7-day token TTL just keeps working until the client reconnects); rate limiting is not enforced in v3.0, documented as an accepted gap at this scale.</p>
+<p><strong>Secrets</strong> (third-party API keys, Apprise URLs) are stored plaintext in <code>config</code> — DB dumps must be treated as sensitive — and are redacted from log lines via a structured-logging helper.</p>
+<p><strong>Logging.</strong> Structured JSON, one event per line, required fields including <code>ts</code>/<code>level</code>/<code>service</code>/<code>job_id</code>/<code>track_id</code>/<code>session_application_id</code>/<code>msg</code> (the job-context fields are null outside a job context, and must be populated inside one — this is what makes the per-job log view work). Emitted to stdout and appended to <code>/logs/&lt;service&gt;.log</code> with size-based rotation (10MB × 5 files, 50MB ceiling per service); a bug-report zip endpoint streams the per-job slice of every service's log. <code>ARM_LOG_LEVEL=debug</code> is set per-service via compose override with no UI toggle (restart-to-change is accepted). <strong>Deliberately not done:</strong> Loki/Promtail/ELK (gold-plated for this scale) and syslog/journald.</p>
+<p><strong>Observability beyond logs.</strong> v3.0 ships logs only — no Prometheus, no OpenTelemetry; the typed <code>events</code> table is the closest thing to metrics, SQL-queryable directly.</p>
+<p><strong>Code quality.</strong> One pre-commit stack gates all four Python packages equally: ruff (format + lint, replacing black/isort/flake8/bugbear/pyupgrade with one Rust-backed binary) and strict mypy (resolved against the real synced workspace via <code>uv run</code>, with every package shipping a <code>py.typed</code> marker so cross-package imports are trusted as typed).</p>
+<p><strong>Notifications</strong> run through Apprise with <strong>native pass-through URLs</strong> — users paste Apprise URLs directly into a UI textarea, with no ARM-side per-service dictionary to maintain. This directly reverses a v2 pain point: hand-maintaining a 30-service mapping went stale as new notification services (Signal, Home Assistant, MQTT, Pushover) piled up as feature requests. A <code>MessageDispatcher</code> fans typed events out to <code>AppriseListener</code>, <code>BashListener</code> (runs a hook script with declared inputs), and <code>InboxListener</code> (the UI bell). Event naming follows <code>&lt;domain&gt;.&lt;verb_past_tense&gt;</code> (e.g. <code>rip.completed</code>); the envelope shape is fixed, but the taxonomy of event types itself grows organically as features land.</p>
+<hr />
+<h2 id="06-deployment">06 — Deployment</h2>
+<p><strong>Supported target: exactly one.</strong> Any Linux host running Docker Engine ≥ 24 and Compose v2 ≥ 2.20 — distro-agnostic, so this is the entire supported matrix. <strong>Explicitly not supported:</strong> Unraid/Synology/QNAP/other NAS-appliance GUIs (dropped 2026-06-05 — they run stock Docker so the generic path may work by accident, but it's untested), TrueNAS/iX Systems, Kubernetes/Helm, Docker Desktop on macOS/Windows for ripping (the VM boundary blocks internal SATA drive pass-through; USB may work via <code>usbipd-win</code> but is untested; NTFS bind mounts are unsupported since the translation layer ignores <code>chown</code>), and Podman (may work by accident).</p>
+<p><strong>Install layout</strong>, everything under a single prefix (<code>~/arm/</code> by default, movable since all bind-mounts in the generated compose are relative): <code>.env</code> (0600), <code>docker-compose.yml</code>, <code>certs/</code> (0700, including the never-mounted CA key at 0400), <code>db/</code>, <code>raw/</code>, <code>media/</code>, <code>logs/</code>. Nothing compiles on the host — the stack is entirely image-based.</p>
+<p><strong>Build chain.</strong> v3 images build fresh on upstream bases — <strong>no</strong> inherited v2 <code>arm-dependencies</code> image (that existed to bake HandBrake/MakeMKV/libdvd-pkg on a shared phusion base for the v2 all-in-one container; v3 splits those workloads so the shared layer isn't shared enough to justify a submodule) and <strong>no</strong> <code>phusion/baseimage</code> (adopted in v2 for multi-service supervision inside one container — irrelevant now that v3's topology is one process per container). Replacement bases: <code>nginx:alpine</code> for UI, <code>python:3.14-slim-bookworm</code> + <code>tini</code> for Backend/Ripper/Transcode. Dropping phusion removes a stack of v2 friction: the UID-unsettable limitation, <code>start_udev.sh</code> noise in bug reports, \~1GB base-image bloat, and the two-repo version-bump tax from submodule coupling. Hardened vendor bases (Chainguard, distroless, Bitnami Secure, UBI Micro) were considered and rejected — paid tiers gate the supply chain oddly for anonymous <code>docker pull</code> distribution, and free/distroless tiers have no shell, breaking the runtime CA-merge + PUID-remap pattern. Supply-chain hygiene is layered on top instead: digest-pinned base images (Renovate/Dependabot PRs on drift), SBOMs via <code>syft</code> + <code>cosign attach sbom</code>, Cosign-signed images via Sigstore's keyless OIDC flow, and weekly scheduled rebuilds so Debian security patches land without waiting for the next ARM release.</p>
+<p><strong>Compose topology.</strong> The generated compose references pinned images with no <code>build:</code> directives for end users; project name <code>armv3</code> and <code>armv3-</code> container prefix guarantee zero collision with a coexisting v2 install. <strong>Rippers are not compose services</strong> — the backend scans <code>/sys/class/block/sr*</code> on boot, lists detected drives, and enrolling one from the UI creates a durable <code>arm-ripper-&lt;serial&gt;</code> container over the Docker socket (labeled <code>arm.drive_id</code>, <code>restart: unless-stopped</code>, with <code>device_cgroup_rules</code> letting the entrypoint pre-create device nodes itself rather than needing a static <code>devices:</code> bind — so it survives unplug/replug and renumbering). These containers sit outside the <code>armv3</code> compose project namespace (<code>docker compose down</code> leaves them running; <code>devtools/ripper-containers.sh</code> manages them directly), and on every Backend boot the <code>drives</code> table is reconciled against labeled containers (missing → created, exited → started, orphan → removed). Transcode containers are likewise never declared in compose, spawned dynamically.</p>
+<p><strong>SCSI-generic pairing.</strong> MakeMKV enumerates via SG ioctls, not the block device, so each ripper needs both <code>/dev/srN</code> and its paired <code>/dev/sgM</code> — without it, <code>makemkvcon info</code> returns zero titles and the failure mode looks like "every disc is unidentifiable" rather than a clean error. The pairing isn't lexicographic (<code>sr0</code> ≠ <code>sg0</code> necessarily); the ripper's entrypoint now follows the kernel's own pairing at runtime rather than requiring it to be worked out at compose-authoring time.</p>
+<p><strong>Host-side auto-mount must be disabled</strong> on desktop hosts (GNOME/KDE/XFCE running <code>udisks2</code>+<code>gvfs</code>), because a host-side auto-mount holds the device exclusively enough that MakeMKV can still scan/rip via the SCSI-generic node but post-rip <code>eject</code> fails with "Device or resource busy." The installer writes a host-wide udev rule (<code>UDISKS_AUTO=0</code> on all <code>sr[0-9]*</code> nodes) rather than scoping to a specific drive, since drives are hot-plugged and enrolled from the UI after install with no fixed drive list to scope to. <code>UDISKS_AUTO=0</code> was chosen over <code>UDISKS_IGNORE=1</code> specifically because the latter hides the drive from Files/Nautilus entirely, breaking the desktop user's ability to still browse it manually — the goal is skip-auto-mount, not hide-the-drive. DBus passthrough into the container was rejected (fails open on headless hosts with no session bus, fragile across distros); raw SCSI eject through <code>/dev/sgM</code> was rejected too (udisks2's PREVENT MEDIUM REMOVAL plus stale host mountpoints make it unreliable) — multiple other containerized-ripping projects hit the identical wall, and the host-udev approach is described as the converged industry pattern.</p>
+<p><strong>Why one ripper container per drive:</strong> one drive is one process is one crash domain — a failing ripper doesn't take its siblings down, each holds its own MakeMKV SCSI handle on its own device, and logs stay per-drive rather than interleaved.</p>
+<p><strong>Environment file.</strong> Generated by the installer with sensible defaults: <code>POSTGRES_USER</code>/<code>PASSWORD</code>/<code>DB</code>, <code>ARM_SERVICE_TOKEN</code> (<code>openssl rand -hex 32</code>), <code>PUID</code>/<code>PGID</code> (host user's), <code>CDROM_GID</code> (detected via <code>stat -c %g /dev/sr0</code>, else 44), <code>ARM_LOG_LEVEL</code>. Re-running the installer preserves <code>.env</code> and only re-derives host-dependent facts if they drifted.</p>
+<p><strong>File ownership</strong> uses the linuxserver.io-style <code>PUID</code>/<code>PGID</code> pattern. Each service's entrypoint starts as root, adjusts an internal user to match, then drops privileges before any filesystem write, so every byte ARM writes is owned by the configured UID/GID (matching, typically, the user's media server). Ripper and transcoder share <code>PGID</code> for group-writable handoff on <code>/raw</code>; output roots get the setgid bit on first boot so every subdirectory ARM creates inherits the parent group. <strong>The single biggest ownership rule: v3 never <code>chown -R</code> a user-mounted volume.</strong> If ownership is wrong at startup, the container logs a diagnostic and exits rather than mutating the mount — a direct reaction to real v2 data-loss bugs where recursive chown at startup clobbered user-owned Plex libraries and broke NFS mounts. Mismatched owners across <code>/raw</code> and <code>/media</code> (common when one is local disk and the other a NAS share) are meant to be reconciled at the mount layer (SMB <code>uid=/gid=/forceuid/forcegid</code>, or NFS idmapd/squash), not by asking the container to span two identities.</p>
+<p><strong>Privilege matrix:</strong> nothing runs <code>--privileged</code>; only <code>arm-backend</code> (Docker socket, root-equivalent, documented and accepted) and <code>arm-ripper-*</code> (device access, plus host optical GID via <code>group_add</code>) hold any elevated access, and even the ripper's device access is via ordinary <code>devices:</code>/<code>group_add</code>, not manual cgroup rules or a privileged flag.</p>
+<p><strong>Install steps, in order:</strong> prereq check (fails fast with a clear message) → create the prefix with correct permissions → generate the internal CA → probe for optical drives and issue leaf certs (backend/UI/DB always, plus one per detected drive) → seed <code>.env</code> with generated secrets (API keys left blank for the UI) → generate <code>docker-compose.yml</code> (installs fine with zero drives detected — just omits ripper services with a warning) → print next steps including where to find the generated admin password. <code>install.sh --start</code> runs <code>docker compose up -d</code> automatically; the default is "show me the commands first." Reruns are idempotent: <code>.env</code> and the CA are preserved, all leaf certs regenerate against the existing CA every run (harmless, self-healing, picks up SAN changes), newly-detected drives get new service blocks, and removed drives' blocks are left inert rather than auto-deleted.</p>
+<p><strong>Update, uninstall, backup.</strong> Minor upgrades are <code>docker compose pull &amp;&amp; up -d</code> (Backend runs migrations forward — no downgrade path past minor versions, so back up the DB if paranoid); major upgrades rerun <code>install.sh</code> first to pick up new service blocks or cert SANs. Uninstall is <code>docker compose down &amp;&amp; rm -rf ~/arm</code> — no systemd units, no other host state. Backup priority order: the CA private key (unique and unrecoverable, though losing it is merely annoying — rotate and re-import), a <code>pg_dump</code> (contains plaintext secrets, treat like a password export), <code>.env</code> (losing it just means regenerating tokens and matching the DB), and <code>raw</code>/<code>media</code> (the user's own responsibility, outside ARM's scope). <code>docker-compose.yml</code> itself is regeneratable and doesn't strictly need backing up.</p>
+<hr />
+<h2 id="07-open-questions-deferred-decisions">07 — Open Questions &amp; Deferred Decisions</h2>
+<p>Deliberately short — most first-draft open questions were resolved and folded into the main documents. The one live entry:</p>
+<p><strong>OQ-1: queue mechanism for async work.</strong> The data model already implements DB-as-queue via <code>SELECT … FOR UPDATE SKIP LOCKED</code>, and that's what v3.0 ships with. The deferred question is whether to eventually upgrade to Redis+RQ, NATS, or keep DB-as-queue indefinitely. Deferred because DB-as-queue is adequate for the expected scale (1–4 drives, 1–4 concurrent transcodes); the moment delayed jobs, fan-out topics, or back-pressure become a real need, it gets re-evaluated. The state machine is deliberately designed so the queue is a swappable component behind a <code>JobQueue</code> interface. Resolve-by condition: when a concrete pain point emerges (multi-minute claim latency, retry explosion), not on a calendar date.</p>
+<p>The process for future OQs: when ready to resolve, fold the decision directly into the relevant architecture doc in a PR that also deletes the OQ entry — no separate <code>resolutions/</code> archive, since git history carries the context. OQs never block development; services are designed around their plug-in points from the start.</p>
+<hr />
+<h2 id="08-v2-isolation-and-cutover-plan">08 — v2 Isolation and Cutover Plan</h2>
+<p><strong>The isolation rule, stated exactly:</strong> "No v3 PR modifies a v2 file. Every v3 artifact is an addition under <code>v3/</code>. The only PR that modifies v2 files is the cutover PR, and it does so exactly once." Every file at repo root as of the start of v3 development — the v2 Python package, its Dockerfile, <code>devtools/</code>, <code>setup/</code>/<code>scripts/</code>, <code>test/</code>, the <code>arm-dependencies</code> submodule, <code>arm_wiki/</code>, and every root-level config/doc file — stays byte-identical throughout v3 development. The one permitted root-level change is additive <code>.gitignore</code> rules, and even that's normally avoided since v3's own <code>.gitignore</code> lives nested under <code>v3/</code>. Inside <code>v3/</code>, anything goes — its own code, compose file, tooling, tests, docs, gitignore.</p>
+<p><strong>Coexistence on one host during development</strong> relies entirely on namespacing: compose project <code>arm</code> vs <code>armv3</code>, container prefix <code>arm-*</code> vs <code>armv3-*</code>, volume prefix <code>arm_*</code> vs <code>armv3_*</code>, UI port 8080 vs 8081, DB port/engine entirely different (MySQL vs Postgres). The <strong>one shared resource that can't be namespaced away is the physical optical drive</strong> — both stacks can map <code>/dev/sr0</code>, but only one should actively use it; the documented pattern is to stop v2's ripper service before exercising a real v3 rip, and start it back up after.</p>
+<p><strong>CI workaround.</strong> GitHub Actions only reads <code>.github/workflows/</code> at the repo root, so v3 CI can't literally live under <code>v3/.github/</code>. The compromise: v2's existing workflow files stay untouched, and v3 adds new files named <code>.github/workflows/v3-*.yml</code>, each scoped via a <code>paths:</code> filter to <code>v3/**</code> so it only fires on v3 changes — this is the one deliberate exception to "everything v3 lives under <code>v3/</code>," justified because adding new files isn't modifying existing ones.</p>
+<p><strong>Branching.</strong> v3 development runs on a long-lived <code>v3/main</code> branch, with feature branches targeting it; the repo's actual default branch (<code>main</code>) keeps receiving v2 fixes if any occur but receives nothing from v3 until cutover.</p>
+<p><strong>The cutover PR, step by step</strong> (exactly one PR ever modifies v2 files): (1) move v3's tracked contents to root via <code>git mv</code> — services, packages, docs/arch and friends, devtools, compose files, <code>install.sh</code>, <code>pyproject.toml</code> — with several files staged under temporary names to avoid collision until v2 is removed; (2) retire v2 — <code>git rm</code> the v2 package, Dockerfile, devtools, setup/scripts, test/, dependency files, and deinit the <code>arm-dependencies</code> submodule, while explicitly keeping <code>LICENSE</code>, <code>CODE_OF_CONDUCT.md</code>, <code>SECURITY.md</code>, <code>CONTRIBUTING.md</code> (to be rewritten), <code>VERSION</code> (to be bumped), the existing <code>docs/</code> PSDs/API-key guides, <code>arm_wiki/</code>, and GitHub issue-template/dependabot/PR-template files; (3) finalize the v3 files at root by renaming out of their temporary staged names; (4) rewrite user-facing docs — swap in the v3 README, add a <code>v3.0.0</code> CHANGELOG entry, rewrite CONTRIBUTING for v3's workflow, bump VERSION to <code>3.0.0</code>; (5) retire v2's CI workflows and drop the <code>v3-</code> prefix from the v3 ones now that they're the only workflows (re-evaluating whether repo-automation workflows like <code>stale.yml</code>/<code>greetings.yml</code> are still wanted before deleting them); (6) ports stay as-is — UI keeps <code>8081</code> rather than reclaiming v2's <code>8080</code>, since the already-installed, TLS-secured deployment is the source of truth; (7) v2 is preserved with <strong>no git tag</strong> — it remains reachable via ordinary pre-cutover git history (<code>git checkout &lt;sha&gt;</code>) and via its already-published, untouched Docker image tags, so a user who wants to stay on v2 simply keeps running their existing image.</p>
+<p><strong>What the cutover explicitly is NOT:</strong> not a data migration (v2 users opt into v3 by pointing at a fresh database and re-ripping, or stay on the pinned v2 tag); not a branch rename (<code>main</code> stays <code>main</code>, its content just pivots); not a soft/gradual migration (v2 is removed from <code>main</code> in one PR — the git history and existing images are the preservation mechanism, not a parallel branch kept around).</p>
+<p><strong>Readiness criteria for cutover</strong> (the cutover PR only runs once all are met): every architecture decision in this directory is resolved or explicitly deferred with a known plug-in point; a fresh-host install via the one-liner lands at the login screen, accepts a disc, and produces a transcoded file using the Big Buck Bunny ISO fixture; the crash-recovery exercise passes (five queued rips + simulated power cut mid-batch resumes cleanly, unattended); at least one real Blu-ray, DVD, and audio CD rip have each completed end-to-end on a contributor's machine; CI is green on <code>main</code> and the full stack runs end-to-end on the single supported target; and maintainers have agreed v3 is ready to replace v2.</p>
+<hr />
+<h2 id="09-testing-philosophy-as-built">09 — Testing Philosophy (as-built)</h2>
+<p>Records what was actually built, as of 2026-05-16, which diverged from the original plan in doc 05 — that plan's testing section was retired in favor of this dedicated document once the Backend's tiers settled differently than first specified.</p>
+<p><strong>Five principles.</strong> (1) Tests run with one command and zero infrastructure — <code>uv run pytest</code>, no Docker/Postgres/drives/network; the moment a suite needs a sidecar to pass, it stops being run. (2) Coverage is a floor for confidence, not a vanity number — the Backend holds 100% statement coverage (branch coverage measured, not gated), with any excluded line requiring an explicit, written justification rather than a lowered bar. (3) Test the real code path, fake only the true I/O boundary — the DB session, the Docker socket, outbound HTTP, the WS hub, the filesystem clock are faked; a test that mocks the thing it's testing gets deleted. (4) Speed is a feature — the 600+-test Backend suite runs in \~15s, with deliberately-slow production paths (argon2 work factor) dialled down in tests without changing the algorithm or code path itself. (5) Determinism over fidelity where they conflict — a test that passes or fails based on whether the host happens to have a GPU or Docker socket is worse than no test; environment-dependent startup code is pinned to one deterministic branch and the other side gets a unit test or an explicit, justified exclusion instead.</p>
+<p><strong>Two tiers, as actually built for the Backend</strong> (diverging from the original "per-service unit tests against real Postgres + contract tests" plan):</p>
+<ul>
+<li><strong>Tier 1 — fast fake-session tests</strong>, the bulk of the suite. Each test builds a minimal FastAPI app (or calls a function directly) and overrides the DB-session dependency with an in-memory fake <code>AsyncSession</code> that pattern-matches <code>select(...).where(...)</code> against seeded rows — a deliberate, owned piece of infrastructure, not a generic mock framework. \~0.3s per test; this is where exhaustive router/logic branch coverage lives. When a handler needs a query shape the fake can't express (e.g. Postgres-specific <code>ON CONFLICT</code>), that's treated as a signal that the SQL belongs to the integration tier, not a reason to force the fake to cover it.</li>
+<li><strong>Tier 2 — real-DB e2e harness</strong>, booting the actual <code>arm_backend.main:app</code> (real lifespan, real seeders, every router mounted, real JWT loading a real user row) against a real SQLAlchemy engine on file-backed SQLite. This is the only tier exercising <code>main.py</code>, <code>db.py</code>, <code>seeders.py</code>, and the wiring the fake-session tier structurally can't reach. SQLite stands in for Postgres because "zero infrastructure" outranks dialect fidelity for API-surface coverage — the production models' <code>JSONB</code>/<code>ARRAY</code> types are swapped for generic <code>JSON</code> in this harness, and the explicit, accepted consequence is that Postgres-only dialect features and real Alembic migration fidelity are out of scope for this tier.</li>
+</ul>
+<p><strong>Why not real Postgres in CI:</strong> it was the original Tier-1 design and was abandoned because it violates the zero-infrastructure principle for the 99% of tests that don't need real Postgres semantics — every contributor and CI run would pay container-startup latency and flakiness to test routing logic that doesn't care what the database is. The paths that do care are deliberately pushed to a separate, explicitly-scoped integration tier instead.</p>
+<p><strong>Coverage policy.</strong> 100% statements on the Backend, branch coverage measured but not gated (<code>coverage report</code> runs in CI but there's no <code>fail_under</code> — a deliberate choice, with a regression ratchet ready to enable later but declined for now so coverage noise doesn't block unrelated PRs). Exclusions require an explicit, justified <code># pragma: no cover</code> comment on the line above the excluded statement, reserved for genuinely unreachable-in-process code (the real DB session, the uvicorn entrypoint, lifespan shutdown-timeout arms, post-seeder impossible states, dead-by-construction fallbacks) — never for code that's merely hard to reach, which stays documented as a residual gap instead of hidden behind a pragma.</p>
+<p><strong>What's explicitly not tested, and why:</strong> real Postgres dialect + Alembic migrations (deferred to the not-yet-built integration tier); cross-service flows over real REST/WS between live containers (the planned-but-unbuilt contract tier's job); browser e2e/Playwright (fragile, low return for a thin UI reviewed visually plus vitest unit tests); and real hardware — real drives, GPUs, MakeMKV/HandBrake against arbitrary discs (GPU/Docker probing is pinned deterministic in tests; the planned Big Buck Bunny loop-device rig is meant to cover real-pipeline assertions).</p>
+<p><strong>Planned but not yet built:</strong> a <strong>contract tier</strong> checking the published OpenAPI against <code>arm_common.schemas</code> on every PR (catching "schema changed, generated client didn't"), plus one contract test per ripper/transcoder call posted against a spun-up Backend in test mode (catching "producer changed, consumer didn't"); and a <strong>Big Buck Bunny integration rig</strong> — a <code>devtools/arm-test-rip</code>-style script mounting a CC-BY-licensed BBB ISO as a loop device in a disposable ripper container, meant to be the home for real-pipeline and real-Postgres-dialect assertions the SQLite e2e tier explicitly skips. Arbitrary proprietary discs are never used in testing, for obvious legal reasons.</p>
+<p><strong>Sharp edges worth knowing:</strong> the Backend's <code>Settings</code> object is a process singleton whose test-time env defaults are set by <code>tests/e2e/conftest.py</code> importing first and winning session-wide — new shared env defaults must go through that lens; test module basenames must stay globally unique across services because pytest's default import mode aborts whole-suite collection on a duplicate; <code>db._build_engine</code> mangles <code>sqlite://</code> URLs via a urlparse round-trip, so the e2e harness swaps the engine object post-import rather than relying on the import-time <code>DATABASE_URL</code>; long inline <code># pragma</code> comments get reflowed by ruff onto the wrong physical line, breaking coverage's recognition of them, so the justification belongs on the line above, not inline; and argon2 cost is dialled down in the e2e harness specifically (the hash self-describes its params, so a cheap hasher still round-trips the real verifier) to cut an \~80s run to \~15s.</p>
+<hr />
+<h2 id="10-iso-source-ripping-proposed-design-only">10 — ISO-Source Ripping (proposed, design only)</h2>
+<p>The one document in this set explicitly marked <strong>not built</strong> — a design written and reviewed before any code, with open decisions still collected at the end.</p>
+<p><strong>The name clash to avoid.</strong> "ISO" means two unrelated things: <strong>ISO as output</strong> (<code>rip_presets.output_mode='iso'</code>, already shipped — a full-disc image produced <em>from</em> a physical disc) and <strong>ISO as source</strong> (ripping <em>from</em> an existing <code>.iso</code> file through the normal pipeline, no physical disc involved) — this document is exclusively about the second, always called "ISO-source ripping" or "ISO ingestion" to keep the two straight.</p>
+<p><strong>The shape, in one sentence.</strong> An ISO-source ripper is an ephemeral, backend-spawned worker container — the transcode-container lifecycle, not a long-running service. The Backend spawns one per ISO on demand, it rips, reports, and exits (<code>auto_remove</code>); it is explicitly not a persistent <code>arm-ripper-iso</code> daemon, and the eventual front door (UI file upload → spawn a worker per upload) is deferred, with only the ephemeral-spawn architecture being locked in now.</p>
+<p><strong>Why now.</strong> ISO-source ripping already half-exists, but only as an internal test hook: the ripper accepts <code>ARM_MANUAL_TRIGGER_ISO</code>, treats the ISO as its bound device, rips once on startup, then <strong>idles forever</strong> — the opposite of ephemeral — with no API, no UI, and no spawn mechanism, which is why <code>devtools/iso-smoke.sh</code> had to grow into a large hand-rolled orchestrator (fixture fetch, key scrape, manual <code>docker run</code> assembly, live-ripper stop/restart, polling, teardown) just to exercise it. The good news is the Backend already spawns ephemeral workers exactly this way for transcoding — ISO ingestion is proposed as the same mechanism pointed at a different image, reusing two things nearly verbatim: the disc pipeline itself (already source-blind — the scan layer already routes <code>iso:&lt;path&gt;</code> vs <code>dev:&lt;path&gt;</code>, and everything downstream of scan is untouched) and the transcode dispatcher's spawn/claim/heartbeat/stale-sweep pattern, cloned with a new <code>rip_tasks</code> table pointed at the ripper image instead.</p>
+<p><strong>Target architecture.</strong> A <code>rip_tasks</code> table mirrors <code>transcode_tasks</code> (status, <code>claimed_by</code>, <code>claim_heartbeat_at</code>, <code>attempts</code>, plus <code>source_ref</code> and <code>session_id</code>); a rip dispatcher background loop — a near-copy of the existing transcode dispatcher's spawn logic — counts in-progress tasks against <code>MAX_PARALLEL_ISO_RIPS</code>, dequeues queued rows FIFO with <code>FOR UPDATE SKIP LOCKED</code>, spawns one ephemeral ripper per task with a unique hostname and label, and runs a stale-claim sweep that doubles as this feature's entire crash-recovery story (replacing the physical ripper's boot-probe mechanism). The ripper gains a third entry mode alongside "poll a physical drive" and the legacy one-shot env var: given <code>ARM_RIP_TASK_ID</code>, it claims the task via the same handshake pattern transcoders use, runs the existing rip pipeline unmodified, and on completion marks the task terminal and <strong>exits</strong> — no idle-forever, no WS command loop. There's deliberately no new WS command for this; the dispatcher-spawn handshake replaces it, with WS retained only for in-flight cancel (mirroring transcode cancel).</p>
+<p><strong>The one genuine new wrinkle: drive identity.</strong> Transcoders never create jobs and so need no drive, but ISO rippers do — <code>Job.drive_id</code> is a non-null foreign key. Two options were weighed: <strong>(A), recommended for v1</strong> — the backend creates an ephemeral <code>Drive</code> row per spawn (hostname <code>arm-ripper-iso-{suffix}</code>, device_path \= the ISO reference), hands its ID back at claim time, and a <code>kind</code> discriminator (<code>optical</code> | <code>iso</code>) hides these from the UI's live-drive list; this keeps the pipeline and owner-auth model byte-identical, which is judged the biggest practical win. <strong>(B)</strong> — decoupling via a nullable <code>Job.drive_id</code> plus a <code>Job.source</code> field — is cleaner long-term but touches drive-owner auth, <code>get_in_flight_job</code>, and the whole rip-start/track/complete path, so it's deferred as a bigger, later change if ephemeral drive rows become noisy.</p>
+<p><strong>Source today vs. tomorrow.</strong> v1 is a server-side library directory — a host path bind-mounted read-only into each spawned worker at <code>/isos</code>, enumerated via a new <code>GET /api/iso/library</code> endpoint for the UI picker. Browser upload is explicitly deferred (multi-GB resumable upload, staging storage, and garbage collection are called out as the real remaining work) — but the proposal is explicit that the ephemeral-spawn core doesn't change when upload lands; uploads are just a new way to populate the same library.</p>
+<p><strong>Backend and Ripper changes summarized.</strong> New endpoints: <code>POST /api/iso/rips</code> (enqueues a task; enforces path containment via <code>realpath</code> resolution against the library root — described as the feature's single most important security property, since an absolute or arbitrary client-supplied path must never be accepted), <code>GET /api/iso/library</code>, the worker claim/heartbeat handshake cloned from the transcoder's, plus cancel (force-stopping the labeled container). The Docker socket is already mounted into the Backend for transcode spawns, so no new privilege is taken on. On the ripper side: a task-mode entrypoint keyed off <code>ARM_RIP_TASK_ID</code>; an auth model matching the transcoder's (token-only, no per-container leaf cert — sidestepping the problem of issuing a stable cert to an inherently unstable ephemeral worker); and log identity taken from an explicit service name rather than derived from a device path, so each spawn logs uniquely with zero collision.</p>
+<p><strong>What disappears</strong> if this ships: the "pause the enrolled drive's managed container" dance the smoke script currently does (unnecessary once ephemeral workers have unique hostnames and never touch a real <code>/dev/sr*</code> node); the idle-forever container and its bespoke <code>docker run</code> block; and an earlier considered "compose-overlay" idea, rejected on the grounds that an ephemeral worker isn't a compose service any more than the transcoder is — it ships as an image plus backend settings.</p>
+<p><strong>Concurrency</strong> falls out of the dispatcher pattern for free — natural parallelism, one container per task, capped by <code>MAX_PARALLEL_ISO_RIPS</code> (default 1, matching transcode's default), queued FIFO. This is noted as the first real consumer of the still-deferred general "queue mechanism" question from doc 07.</p>
+<p><strong>Six decisions still needed</strong>, each with a stated recommendation: drive identity (option A above, recommended), whether to reuse the existing ripper image with a task-mode command or build a dedicated <code>arm-ripper-iso</code> image (reuse, recommended), whether to clone the <code>rip_tasks</code>/<code>transcode_tasks</code> pattern directly or build a generalized <code>worker_tasks</code> abstraction over both (clone, recommended), how the ISO library catalog is enumerated (backend scans a mounted directory, recommended), cancel semantics (label-based force-stop matching transcode, recommended), and the default <code>MAX_PARALLEL_ISO_RIPS</code> value (1 to match transcode, though ripping is I/O-bound rather than GPU-bound so a higher default is arguably cheaper).</p>
+<p><strong>Migration path.</strong> <code>devtools/iso-smoke.sh</code> collapses under this design to a thin client: drop a fixture in the library, <code>POST /api/iso/rips</code>, wait for the job, optionally assert on the downstream transcode — with the fixture-fetch and MakeMKV-key-resolution helpers kept as genuine test scaffolding, and the manual <code>docker run</code> block, live-ripper stop/restart dance, and idle container all retired. <code>ARM_MANUAL_TRIGGER_ISO</code> itself is slated for retirement unless a no-backend single-container smoke test is still wanted for some other purpose.</p>
+<hr />
+<h2 id="how-the-eleven-documents-fit-together">How the Eleven Documents Fit Together</h2>
+<p>Document 00 sets the <em>why</em>; 01 sets the <em>what</em> (topology). Documents 02, 03, and 04 form the operational core — lifecycle, wire contract, and schema — and reference each other constantly (a session's output-path template defined conceptually in 02 is a literal column in 04, resolved over the REST calls specified in 03). Documents 05 and 06 are the non-functional backbone every service is built against regardless of feature — auth, TLS, logging, and code quality on one side, deployable packaging and file-ownership rules on the other. Document 07 is the deliberately short record of what's still genuinely undecided. Document 08 governs the meta-process of shipping this entire rebuild without breaking the existing v2 release its users depend on today. Document 09 documents engineering practice as it was actually built — explicitly superseding the original testing plan sketched inside document 05. And document 10 is the one forward-looking proposal in the set, clearly labeled as design-only and not yet real, reusing the exact ephemeral-worker pattern document 01 established for transcoding rather than inventing a new one.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../roadmap/" class="btn btn-neutral float-left" title="Roadmap"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/SteveBunt/arm-documentation" class="fa fa-code-fork" style="color: #fcfcfc"> github</a>
+        </span>
+    
+    
+      <span><a href="../roadmap/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

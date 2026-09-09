@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Roadmap - A.R.M. Project Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Roadmap";
+        var mkdocs_page_input_path = "roadmap.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/ini.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/markdown.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> A.R.M. Project Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../v3scope/">v3 Scope</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Roadmap</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#status-overview">Status Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#now">Now</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next">Next</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#later">Later</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#risks-and-dependencies">Risks and Dependencies</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">A.R.M. Project Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Roadmap</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/SteveBunt/arm-documentation/edit/master/docs/roadmap.md" class="icon icon-github"> Edit on github</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="automatic-ripping-machine-v3-roadmap">Automatic Ripping Machine v3 — Roadmap</h1>
+<p>This roadmap is presented as a Now / Next / Later format rather than a dated timeline because this is a volunteer-maintained open-source project with no external deadlines. Giving precise dates would be false precision and risks putting pressure on the volunteers working on this project.</p>
+<h2 id="status-overview">Status Overview</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Now</th>
+<th style="text-align: center;">Next</th>
+<th style="text-align: center;">Later</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+<p>Phases 0–15.5 of the v3 rebuild are shipped or functionally complete — the project is effectively feature-complete for its v3.0 target (<code>VERSION</code> \= <code>3.0.0-rc3</code>).</p>
+<h2 id="now">Now</h2>
+<p>Work that is either actively gating the v3.0 release or already in flight.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+<th>Status</th>
+<th>Target</th>
+<th>Owner</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maintainer sign-off</td>
+<td>Final "v3 is ready to replace v2" agreement — the last unchecked box in the cutover readiness criteria.</td>
+<td><strong>At risk (stalled)</strong></td>
+<td>As soon as maintainers convene</td>
+<td>ARM maintainers</td>
+<td>None technical — every other readiness criterion is met</td>
+</tr>
+<tr>
+<td>Phase 16 — Cutover PR</td>
+<td>Mechanical PR that moves v3 to repo root and retires v2 from <code>main</code>, per <code>08-v2-isolation-and-cutover.md</code>.</td>
+<td><strong>Blocked</strong></td>
+<td>Immediately after sign-off</td>
+<td>ARM maintainers / core contributors</td>
+<td>Maintainer sign-off (above); Phase 15 (done)</td>
+</tr>
+<tr>
+<td>Documentation polish (Track A)</td>
+<td>User-facing README rewrite, per-service README.md files, ADRs for resolved open questions.</td>
+<td><strong>On track</strong></td>
+<td>Lands with cutover</td>
+<td>ARM maintainers</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="next">Next</h2>
+<p>Designed and scoped, good candidates for the first v3.1 push once cutover lands. Not yet started; no committed dates.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+<th>Status</th>
+<th>Target</th>
+<th>Owner</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Placeholder rips (deferred identity)</td>
+<td>Opt-in flow: an identify miss rips immediately instead of blocking; session applications wait in <code>waiting_identify</code> until the user resolves identity later. Fully designed (Phase 10 in the master plan).</td>
+<td><strong>Not started</strong></td>
+<td>v3.1, first push</td>
+<td>Unassigned</td>
+<td>Phase 7 (transcode fan-out, done), Phase 6 (session applications, done), Phase 3 (rip pipeline, done) — all satisfied</td>
+</tr>
+<tr>
+<td>Generic "skip" mode for home movies</td>
+<td>A form for discs that will never resolve against a metadata provider (e.g., home videos), so they don't get stuck waiting on an identity that will never come.</td>
+<td><strong>Not started</strong></td>
+<td>v3.1, alongside placeholder rips</td>
+<td>Unassigned</td>
+<td>Placeholder rips (above)</td>
+</tr>
+<tr>
+<td>ADRs for resolved architecture decisions</td>
+<td>Formal decision records for the open questions already resolved during the rebuild, so the "why" isn't only recoverable from git history.</td>
+<td><strong>Not started</strong></td>
+<td>v3.1</td>
+<td>ARM maintainers</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h2 id="later">Later</h2>
+<p>Real, but scope and timing are intentionally loose — several are explicitly "resolve only when a concrete pain point emerges," not scheduled work.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+<th>Status</th>
+<th>Owner</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISO-source ripping (user feature)</td>
+<td>Rip from a mounted <code>.iso</code> file instead of a physical disc, exposed as a real user-facing feature rather than the internal CI fixture rig that already exists. Design doc exists (<code>docs/arch/10-iso-source-ripping.md</code>).</td>
+<td>Designed only</td>
+<td>Unassigned</td>
+<td>None blocking — ready to scope into a phase when picked up</td>
+</tr>
+<tr>
+<td>TV-series-aware ripping</td>
+<td>Episode detection and naming conventions for TV box sets, building on the sessions/presets foundation.</td>
+<td>Directional, not designed</td>
+<td>Unassigned</td>
+<td>Sessions/presets (done)</td>
+</tr>
+<tr>
+<td>Queue mechanism upgrade</td>
+<td>Replace DB-as-queue (<code>SELECT … FOR UPDATE SKIP LOCKED</code>) with Redis+RQ or NATS if/when concurrency needs outgrow 1–4 drives / 1–4 concurrent transcodes.</td>
+<td>Explicitly deferred (OQ-1)</td>
+<td>Unassigned</td>
+<td>Triggered by a concrete pain point, not a date</td>
+</tr>
+<tr>
+<td>Deeper observability</td>
+<td>Prometheus metrics, OpenTelemetry tracing, log aggregation beyond the current structured-JSON-to-<code>/logs</code> approach.</td>
+<td>Explicitly out of v3.0/v3.1 scope, backlog only</td>
+<td>Unassigned</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Community disc-fingerprint database</td>
+<td>Populate and use the <code>disc_fingerprint</code>/<code>aacs_disc_id</code> columns (schema exists since Phase 0) via a shared community lookup.</td>
+<td>Schema-only placeholder</td>
+<td>Unassigned</td>
+<td>None designed yet — needs its own spec</td>
+</tr>
+</tbody>
+</table>
+<h2 id="risks-and-dependencies">Risks and Dependencies</h2>
+<ul>
+<li><strong>The whole roadmap currently hangs on one unscheduled human decision.</strong> Maintainer sign-off has no target date, and every "Next" and "Later" item is implicitly waiting behind it (v3.1 work is unlikely to get planning attention before v3.0 actually ships). This is the single biggest risk on the roadmap — worth naming explicitly rather than leaving as an invisible blocker.</li>
+<li><strong>No named owners on any Next/Later item.</strong> As a volunteer open-source project, "unassigned" isn't unusual, but it means none of these have real committed timelines yet — they're backlog, not a plan, until someone picks them up.</li>
+<li><strong>Platform-scope narrowing could generate support load post-cutover.</strong> Unraid/Synology/NAS-appliance support was explicitly dropped for v3.0 (2026-06-05). Users on those platforms who upgrade expecting parity may file issues the project has already decided are out of scope — worth having the "explicitly not supported" messaging ready at cutover, not just in the arch docs.</li>
+<li><strong>Contributor-hardware dependency.</strong> v3.0's real-disc validation (BD/DVD/CD) depended on contributors testing against their own drives. Later items like TV-series-aware ripping will need the same kind of volunteer hardware/time, which isn't something a roadmap date can guarantee.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../v3scope/" class="btn btn-neutral float-left" title="v3 Scope"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../architecture/" class="btn btn-neutral float-right" title="Architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/SteveBunt/arm-documentation" class="fa fa-code-fork" style="color: #fcfcfc"> github</a>
+        </span>
+    
+    
+      <span><a href="../v3scope/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
