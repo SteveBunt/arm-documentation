@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Development documentation for the Automatic Ripping Machine project" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>A.R.M. Project Docs</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/ini.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/markdown.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> A.R.M. Project Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-the-automatic-ripping-machine">What is the Automatic Ripping Machine?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-vision">The Vision</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-arm-does-end-to-end">What A.R.M. Does, End to End</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arm-v2">A.R.M. v2</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how-the-pieces-fit-together">How the pieces fit together</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arm-v3">A.R.M. v3</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#problems-v3-is-built-to-solve">Problems v3 Is Built to Solve</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#design-principles">Design Principles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#explicit-non-goals-for-v30">Explicit Non-Goals for v3.0</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#success-criteria-for-v30">Success Criteria for v3.0</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#current-status-roadmap">Current Status / Roadmap</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="v3scope/">v3 Scope</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="architecture/">Architecture</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">A.R.M. Project Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Overview</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/automatic-ripping-machine/automatic-ripping-machine/edit/master/docs/index.md" class="icon icon-github"> Edit on github</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="automatic-ripping-machine-developer-documentation">Automatic Ripping Machine Developer Documentation</h1>
+<h2 id="what-is-the-automatic-ripping-machine">What is the Automatic Ripping Machine?</h2>
+<p>The Automatic Ripping Machine (ARM) is a headless application that watches for an optical disc being inserted, works out what kind of disc it is, and rips it automatically — no prompts, no babysitting.</p>
+<h2 id="the-vision">The Vision</h2>
+<p>The Automatic Ripping Machine (A.R.M.) should be an all in one solution to build your own media library from your physical media collection that can be set up and used by anyone that reads a quickstart guide.</p>
+<p>Granularity of the setup is a secondary objective intended to be used by power users that want to dive a bit deeper into what it can do.</p>
+<h2 id="what-arm-does-end-to-end">What A.R.M. Does, End to End</h2>
+<ol>
+<li>A disc is inserted; ARM detects it via <code>udev</code>.</li>
+<li>It identifies the disc type — movie/TV (Blu-ray or DVD), music CD, or plain data — and picks the matching workflow.</li>
+<li><strong>Video</strong> discs get metadata lookup (OMDb, with TMDB support added later as an alternative provider), are ripped with MakeMKV, and are queued for transcoding with HandBrake — optionally hardware-accelerated via Intel QuickSync or AMD VCE.</li>
+<li><strong>Audio</strong> CDs are ripped with <code>abcde</code>, tagged and matched against MusicBrainz, with album art pulled in automatically.</li>
+<li><strong>Data</strong> discs are backed up as ISO images.</li>
+<li>The disc is ejected and the drive becomes available for the next one — ARM supports several drives ripping in parallel.</li>
+<li>Progress, logs, and job history are all visible through a web UI, and ARM can push notifications out to things like Discord, Slack, ntfy, IFTTT, and Pushbullet via Apprise.</li>
+</ol>
+<h2 id="arm-v2">A.R.M. v2</h2>
+<p>A.R.M. v2 is the entire current, actively maintained architecture, spanning every release from <code>2.0.0</code> up to today's <code>2.24.0</code>. It superseded the original v1, which was a simpler set of bash scripts for basic rip automation.</p>
+<p>The defining moment was <code>2.0.0</code>\: a complete rewrite of the project in Python, which also let ARM run as a non-root user for the first time. Everything since has been built on top of that foundation.</p>
+<h3 id="how-the-pieces-fit-together">How the pieces fit together</h3>
+<ul>
+<li><strong>Language/runtime:</strong> Python, designed to run headless and as a non-root user.</li>
+<li><strong>Packaging:</strong> typically run via Docker.</li>
+<li><strong>Web UI (<code>armui</code>):</strong> a Flask + Bootstrap application added in <code>2.1</code>, backed by SQLite. It handles job monitoring, log viewing, a searchable job database, a persistent settings page (writing back to <code>arm.yaml</code>), and — since <code>2.2</code> — login/authentication for multiple users.</li>
+<li><strong>Ripping tools:</strong> MakeMKV and HandBrake for video, <code>abcde</code> for audio.</li>
+<li><strong>Metadata providers:</strong> OMDb (original), with TMDB added later as an alternative for movies; MusicBrainz for CD identification.</li>
+<li><strong>Notifications:</strong> Apprise as the common layer, fanning out to most major chat/push services.</li>
+</ul>
+<p>A.R.M. v2 is now in maintenance and not in active development. Current and Future development is focused on the v3 release.</p>
+<h2 id="arm-v3">A.R.M. v3</h2>
+<p>A.R.M. v3 is a ground up rewrite of the system to fix structural problems in v2 that a refactor couldn't solve, while keeping the same core promise: insert a disc, walk away, get a finished file.</p>
+<h3 id="problems-v3-is-built-to-solve">Problems v3 Is Built to Solve</h3>
+<ol>
+<li><strong>Resource isolation.</strong> In v2, ripping, UI, and transcoding share one process tree, so heavy work in one area starves the others. v3 separates these into services so concurrent rips and a transcode don't degrade the UI.</li>
+<li><strong>Batch-rip resumability.</strong> In v2, a power loss mid-batch discards progress with no recovery path. v3 checkpoints finely enough that completed work survives a crash and unfinished work re-queues automatically on restart.</li>
+<li><strong>Sessions</strong> (rip once, transcode many times with different presets) — v2 conflates ripping and transcoding into one irreversible pipeline; v3 separates them so a ripped disc can be re-transcoded later without re-ripping.</li>
+</ol>
+<h3 id="design-principles">Design Principles</h3>
+<ol>
+<li><strong>Bits first, metadata second, transcode third</strong> — a rip succeeds once bits are safely on disk; metadata and transcoding are independent stages that can fail, retry, or re-run without touching the raw.</li>
+<li><strong>One service, one responsibility</strong> — Ripper turns a disc into bytes; Backend owns state and talks to the internet; Transcode turns one raw file into one output; UI renders state and takes commands.</li>
+<li><strong>Backend is the single internet boundary</strong> — Ripper and Transcode containers never call external services (TMDB/OMDB/MusicBrainz/Apprise/webhooks); all external calls and credentials live in the Backend.</li>
+<li><strong>Postgres is the source of truth; stdout is the source of logs</strong> — durable state lives in Postgres; logs are structured JSON, no third persistence mechanism.</li>
+<li><strong>Crash-safe by default</strong> — every long-running operation is checkpointable; a stale "in-progress" row with no live worker signals "re-queue me."</li>
+<li><strong>No sacred cows</strong> — a greenfield rebuild; any assumption inherited from v2 is open for re-decision from first principles.</li>
+</ol>
+<h3 id="explicit-non-goals-for-v30">Explicit Non-Goals for v3.0</h3>
+<ul>
+<li>No TrueNAS / iX Systems support.</li>
+<li>No v2 → v3 data migration (v3 starts from a clean schema).</li>
+<li>No multi-tenancy or RBAC — single admin only.</li>
+<li>No Kubernetes/Helm — Docker Compose is the only supported deployment surface.</li>
+<li>No in-backend transcoding — transcoding always runs in a dedicated ephemeral container.</li>
+</ul>
+<h3 id="success-criteria-for-v30">Success Criteria for v3.0</h3>
+<ul>
+<li>Five discs queued across two drives complete without manual intervention, including a simulated power-cut mid-batch that resumes cleanly.</li>
+<li>A ripped disc can have a new session (transcode preset) applied from the UI months later without re-ripping.</li>
+<li>A single PR can change a protocol payload and its two endpoints (ripper side and backend side) atomically.</li>
+<li>A bug-reporter can download one log file scoped to one job ID and attach it to a GitHub issue.</li>
+<li>A fresh install on a new host reaches the login screen in under 5 minutes.</li>
+</ul>
+<h3 id="current-status-roadmap">Current Status / Roadmap</h3>
+<p><strong>Shipped in v3:</strong></p>
+<ul>
+<li>Service split into FastAPI backend, Vue UI, Postgres, one ripper container per drive, and an ephemeral per-job transcoder, orchestrated with Docker Compose.</li>
+<li>Migrated from SQLite to Postgres with async SQLAlchemy/Alembic.</li>
+<li>Ripper and UI rewritten as new codebases with a pytest suite and a backend statement-coverage policy.</li>
+<li>Sessions, rip presets, and transcode presets implemented and user-editable in the UI (including music-to-FLAC/MP3, data copy, and ISO dump).</li>
+<li>One-command install via <code>install.sh</code>, including TLS certs and per-drive service blocks.</li>
+<li>Notifications via Apprise, configured from the UI.</li>
+<li>GPU transcoding (Intel QSV / AMD VAAPI / NVIDIA NVENC) via an opt-in overlay.</li>
+</ul>
+<p><strong>In progress / ahead:</strong></p>
+<ul>
+<li>Stabilizing the alpha toward a v3.0 release (signed images for every supported platform, CI-built release tags).</li>
+<li>Ripping from an <code>.iso</code> source instead of a physical disc (designed, not yet built).</li>
+<li>TV-series-aware ripping (episode detection and naming) and further session ergonomics.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="v3scope/" class="btn btn-neutral float-right" title="v3 Scope">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/automatic-ripping-machine/automatic-ripping-machine" class="fa fa-code-fork" style="color: #fcfcfc"> github</a>
+        </span>
+    
+    
+    
+      <span><a href="v3scope/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-09-09 23:53:17.909990+00:00
+-->

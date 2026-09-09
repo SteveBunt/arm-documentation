@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>v3 Scope - A.R.M. Project Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "v3 Scope";
+        var mkdocs_page_input_path = "v3scope.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/ini.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/markdown.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> A.R.M. Project Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">v3 Scope</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#aims">Aims</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#resource-isolation">Resource Isolation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#safe-batch-processing">Safe Batch Processing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#decoupled-ripping">Decoupled Ripping</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functional-scope">Functional Scope</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#architectural-scope">Architectural Scope</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#platform-scope">Platform Scope</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#explicit-non-goals">Explicit Non-Goals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shipped-vs-deferred-as-of-300-rc3">Shipped vs. Deferred (as of 3.0.0-rc3)</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../roadmap/">Roadmap</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture/">Architecture</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">A.R.M. Project Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">v3 Scope</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/automatic-ripping-machine/automatic-ripping-machine/edit/master/docs/v3scope.md" class="icon icon-github"> Edit on github</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="v3-scope">v3 Scope</h1>
+<p>A.R.M. v3 is a ground-up rebuild of ARM as five single-responsibility containers instead of one monolith. The core vision is unchanged: insert a disc, walk away, get a finished file. This document looks at the core aims of v3 then  splits into four more detailed layers — what it does, how it's built, what platform it runs on, and what's deliberately excluded.</p>
+<h2 id="aims">Aims</h2>
+<p>The aim of the v3 rewrite is to fix structural problems in v2 that a refactor couldn't solve, while keeping the same core promise: insert a disc, walk away, get a finished file.</p>
+<p>Underpinning all these problems is a shift in who the software is for: v3 is explicitly built for a single-admin homelab user, often a "data-hoarder" who rips to preserve the raw bits rather than just to feed a streaming app — which is why raw files are kept forever by default and re-transcoding from raw is treated as a normal, expected operation rather than an edge case.</p>
+<h3 id="resource-isolation">Resource Isolation</h3>
+<p>The first problem is resource isolation. In v2, ripping, transcoding, and the web UI all run inside one container sharing a single process tree, so heavy work in one area — a second concurrent rip, a transcode — starves everything else, and the UI becomes unresponsive exactly when you'd want to check on it. v3's aim is to split these into separate services (a ripper container per drive, an ephemeral transcode container per job, a backend, a UI) so concurrent work in one area can't degrade another.</p>
+<h3 id="safe-batch-processing">Safe Batch Processing</h3>
+<p>The second, and arguably the bigger motivator, is crash-safe batch processing. In v2, a rip is atomic and non-resumable — if you queue five discs and lose power on disc #3, there's no way to recover; you start over. v3's aim is to checkpoint finely enough that a power event or crash doesn't discard completed work, with interrupted jobs automatically re-queued on restart.</p>
+<h3 id="decoupled-ripping">Decoupled Ripping</h3>
+<p>A third, closely related aim came out of scoping: Sessions — decoupling ripping from transcoding so you can rip a disc once and transcode it multiple times with different presets later (a re-encode with new settings, an extra format), rather than the two being locked together in one irreversible pipeline the way v2 does it.</p>
+<h2 id="functional-scope">Functional Scope</h2>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disc detection</td>
+<td><code>ioctl(CDROM_DRIVE_STATUS)</code> poll, 2s interval — no udev dependency</td>
+</tr>
+<tr>
+<td>Video identify</td>
+<td>TMDB (primary) → OMDB (fallback)</td>
+</tr>
+<tr>
+<td>Audio identify</td>
+<td>MusicBrainz Disc ID</td>
+</tr>
+<tr>
+<td>Ripping</td>
+<td>MakeMKV (video), <code>abcde</code> (audio CD), raw ISO dump (data discs)</td>
+</tr>
+<tr>
+<td>Track selection</td>
+<td>Per-title, via <code>rip_presets.track_selection</code></td>
+</tr>
+<tr>
+<td>Transcoding</td>
+<td>HandBrake, in an ephemeral per-job container</td>
+</tr>
+<tr>
+<td>GPU acceleration</td>
+<td>Intel QSV / AMD VAAPI / NVIDIA NVENC, auto-detected, opt-in overlay</td>
+</tr>
+<tr>
+<td>Multi-drive</td>
+<td>One long-running ripper container per drive, fully parallel</td>
+</tr>
+<tr>
+<td>Sessions</td>
+<td>Named (rip preset, transcode preset, output template) bundle — rip once, transcode many times later</td>
+</tr>
+<tr>
+<td>Crash recovery</td>
+<td>Interrupted rips restart from scratch; transcode tasks resume from last checkpoint</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>Outbound via Apprise, pass-through URLs, no ARM-side service dictionary</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>JWT, argon2id, forced password change on first login</td>
+</tr>
+<tr>
+<td>Progress</td>
+<td>Live per-job progress over WebSocket</td>
+</tr>
+<tr>
+<td>Debugging</td>
+<td>Per-job log zip, scoped to one <code>job_id</code></td>
+</tr>
+<tr>
+<td>Install</td>
+<td>One-command installer — TLS certs, secrets, per-drive containers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="architectural-scope">Architectural Scope</h2>
+<pre><code>UI (Vue/nginx) ──▶ Backend (FastAPI) ──▶ Ripper × N (one per drive)
+                        │        └────▶ Transcode (ephemeral, per job)
+                        ▼
+                    Postgres
+</code></pre>
+<ul>
+<li><strong>Five single-responsibility services.</strong> No service does "a little of the other guy's job."</li>
+<li><strong>Backend is the only service that talks to the internet.</strong> Ripper and Transcode never make outbound calls.</li>
+<li><strong>Two transports only.</strong> REST for anything that must durably land (state transitions); WebSocket for progress that a dropped tick doesn't hurt.</li>
+<li><strong>TLS on every hop</strong>, including Postgres, via a per-install internal CA. LAN-only by design — never internet-exposed.</li>
+<li><strong>PUID/PGID file ownership</strong>, with a hard rule: <strong>never recursively <code>chown</code> a user-mounted volume.</strong> A startup ownership mismatch fails loudly instead of "fixing" it.</li>
+</ul>
+<p>These aren't just implementation choices — they define what's in scope. Anything that would need a second internet-facing service, a plaintext hop, or forcible ownership repair is out of bounds by design, not backlog.</p>
+<p>See the <a href="../architecture/">architecture</a> page for more information.</p>
+<h2 id="platform-scope">Platform Scope</h2>
+<p><strong>Supported (one target):</strong></p>
+<pre><code>Linux + Docker Engine ≥ 24 + Compose v2 ≥ 2.20
+</code></pre>
+<p>Distro-agnostic — Ubuntu, Debian, Fedora, Arch all fine.</p>
+<p><strong>Explicitly NOT supported</strong> (dropped or never a goal, <strong>not just untested</strong>):</p>
+<ul>
+<li>❌ Unraid / Synology DSM / QNAP / other NAS-appliance container GUIs — <em>dropped 2026-06-05</em></li>
+<li>❌ TrueNAS / iX Systems</li>
+<li>❌ Kubernetes / Helm</li>
+<li>❌ Docker Desktop on macOS/Windows <strong>for ripping</strong> — internal SATA drives can't cross the VM boundary (UI/transcoder-as-frontend still works over SMB/WSL2)</li>
+<li>❌ Podman — may work by accident, not tested</li>
+</ul>
+<h2 id="explicit-non-goals">Explicit Non-Goals</h2>
+<p>Not "not yet" — deliberately decided against for v3.0:</p>
+<ul>
+<li>❌ <strong>Multi-tenancy / RBAC</strong> — single admin, single household by design</li>
+<li>❌ <strong>v2 → v3 data migration</strong> — opt into a fresh DB, or stay on the pinned v2 tag</li>
+<li>❌ <strong>In-backend transcoding</strong> — always a dedicated ephemeral container</li>
+<li>❌ <strong>Metrics / tracing</strong> (Prometheus, OpenTelemetry) — structured logs only; the <code>events</code> table is the closest thing to metrics</li>
+<li>❌ <strong>Queue broker</strong> (Redis, NATS) — DB-as-queue (<code>SELECT … FOR UPDATE SKIP LOCKED</code>) is deliberately good enough at 1–4 drives / 1–4 concurrent transcodes; revisit only if a concrete pain point emerges (tracked as OQ-1 in <code>docs/arch/07-open-questions.md</code>)</li>
+</ul>
+<h2 id="shipped-vs-deferred-as-of-300-rc3">Shipped vs. Deferred (as of <code>3.0.0-rc3</code>)</h2>
+<p><strong>✅ Shipped and validated end-to-end</strong> — everything in <a href="#functional-scope">Functional Scope</a> above, including real BD/DVD/CD rips on contributor hardware and an automated crash-recovery drill (<code>devtools/crash-drill.sh</code>).</p>
+<p><strong>🚧 Explicitly deferred (not a v3.0 non-goal — candidate v3.1 backlog):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Placeholder rips (rip immediately on identify-miss, resolve identity later)</td>
+<td>Fully designed, not built</td>
+</tr>
+<tr>
+<td>ISO-source ripping as a real feature</td>
+<td>Internal test hook only (<code>ARM_MANUAL_TRIGGER_ISO</code>)</td>
+</tr>
+<tr>
+<td>TV-series-aware ripping (episode detection/naming)</td>
+<td>Not designed</td>
+</tr>
+<tr>
+<td>Community disc-fingerprint DB</td>
+<td>Schema columns reserved (<code>disc_fingerprint</code>, <code>aacs_disc_id</code>), nothing writes to them yet</td>
+</tr>
+</tbody>
+</table>
+<p><strong>🔴 The one actual blocker to release:</strong> maintainer sign-off. Every technical readiness criterion in the cutover checklist is already met.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../roadmap/" class="btn btn-neutral float-right" title="Roadmap">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/automatic-ripping-machine/automatic-ripping-machine" class="fa fa-code-fork" style="color: #fcfcfc"> github</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../roadmap/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
