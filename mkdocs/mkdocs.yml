@@ -6,10 +6,10 @@ site_description: Development documentation for the Automatic Ripping Machine pr
 remote_branch: gh-pages
 remote_name: origin
 nav:
-  - Home: index.md
-  #- Installation: installation.md
-  #- Configuration: configuration.md
-  #- Usage: usage.md
+  - Overview: index.md
+  - v3 Scope: v3scope.md
+  - Roadmap: roadmap.md
+  - Architecture: architecture.md
   #- Development: development.md
   #- Contributing: contributing.md
   #- Changelog: changelog.md
@@ -30,6 +30,6 @@ theme:
     - ini
     - markdown
 #  shortcuts:
-  navigation_depth: 2
+  navigation_depth: 4
   docs_dir: dev_docs
   site_dir: site
